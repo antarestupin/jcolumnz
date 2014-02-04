@@ -1,1 +1,28 @@
-.jcolumnz-container { border: 1px solid #aaa; height: 300px; border-radius: 3px; box-shadow: 0 0 7px #ccc; }
+/* Container */
+
+.jcolumnz-container { border: 1px solid #aaa; height: 300px; border-radius: 3px; box-shadow: 0 0 7px #ccc; overflow-x: auto; width: 100; }
+
+/* Panels */
+
+.jcolumnz-panel { width: 200px; border: 0px solid #aaa; border-right-width: 1px; height: inherit; overflow-y: auto; float: left; }
+.jcolumnz-panel ul { margin: 0; padding: 0; list-style-type: none; }
+.jcolumnz-panel ul li { padding: 5px; cursor: pointer; }
+.jcolumnz-panel ul li.active {
+
+    color: #fff;
+    text-shadow: 0px 1px 1px #4d4d4d;
+
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #5792FF),
+        color-stop(1, #8FC8F7)
+    );
+    background-image: -o-linear-gradient(bottom, #5792FF 0%, #8FC8F7 100%);
+    background-image: -moz-linear-gradient(bottom, #5792FF 0%, #8FC8F7 100%);
+    background-image: -webkit-linear-gradient(bottom, #5792FF 0%, #8FC8F7 100%);
+    background-image: -ms-linear-gradient(bottom, #5792FF 0%, #8FC8F7 100%);
+    background-image: linear-gradient(to bottom, #5792FF 0%, #8FC8F7 100%);
+
+}
