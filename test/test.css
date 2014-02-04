@@ -1,6 +1,6 @@
 /* Container */
 
-.jcolumnz-container { border: 1px solid #aaa; height: 300px; border-radius: 3px; box-shadow: 0 0 7px #ccc; overflow-x: auto; width: 100; }
+.jcolumnz-container { border: 1px solid #aaa; height: 300px; border-radius: 3px; box-shadow: 0 0 7px #ccc; overflow-x: auto; overflow-y: none; width: 100; }
 
 /* Panels */
 

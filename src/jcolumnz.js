@@ -76,6 +76,8 @@
 
                     console.log("Attach target to " + element.label);
 
+                    $('li').on('click', '#jcolumnz-entry-' + id, function(){ console.log("Should open " + element.target) });
+
                 }
 
             }
