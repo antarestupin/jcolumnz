@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>jColumnz</title>
+
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../src/jcolumnz.js"></script>
+
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="test.css" />
+
+    </head>
+    <body>
+
+        <div class="container" id="content">
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <h1>jColumnz</h1>
+
+                    <div id="explorer"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script id="source-code" type="text/javascript">
+
+            $( document ).ready( function() {
+
+                var my_data = [
+
+                    { label: "Fruits",
+                        children: [
+
+                            { label: "Banana" },
+                            { label: "Apple", on_click: function(){ alert("Someone is stilling my apple!"); } }
+
+                        ] },
+
+                    { label: "Legumes" }
+
+                ]
+
+                $("#explorer").columnz({ data: my_data });
+
+            });
+
+        </script>
+
+    </body>
+</html>
