@@ -14,25 +14,28 @@
      * @param container
      * @param root
      */
-    function jcolumnz_exploreTree( container, root ) {
+    function jcolumnz_exploreTree( id, container, elements ) {
 
-        var elements = [];
+        var id = Math.random().toString(36).substr(2, 9);
+        var entries = [];
 
-        for ( entry of root ) {
+        for ( element of elements ) {
 
-            console.log(entry);
+            if ( typeof element.children !== "undefined" ) {
 
-            if ( typeof entry.children !== "undefined" ) {
-
-                jcolumnz_exploreTree( container, entry.children );
+                element.target = jcolumnz_exploreTree( id, container, element.children );
 
             }
 
-            elements.push( entry );
+            //console.log(element);
+
+            entries.push( element );
 
         }
 
-        jcolumnz_createNewPanel( container, elements );
+        jcolumnz_createNewPanel( id, container, elements );
+
+        return id;
 
     }
 
@@ -43,18 +46,43 @@
      * @param container
      * @param elements
      */
-    function jcolumnz_createNewPanel( container, elements ) {
+    function jcolumnz_createNewPanel( panel_id, container, elements ) {
 
-        console.log("New Panel >> " + elements);
+        var id;
+
+        console.log(elements);
 
         // Build <li>s.
 
         var li = "";
         for ( element of elements ) {
-            li += "<li>" + element.label + "</li>";
+
+            id = Math.random().toString(36).substr(2, 9);
+
+            li += "<li id='jcolumnz-entry-" + id +"'>" + element.label + "</li>";
+
+            // Add onClick behaviour on the list item.
+
+            if ( typeof element.on_click !== "undefined" ) {
+
+                console.log("Attach behaviour to " + element.label);
+
+                $('li').on('click', '#jcolumnz-entry-' + id, element.on_click);
+
+
+            } else {
+
+                if ( typeof element.target !== "undefined" ) {
+
+                    console.log("Attach target to " + element.label);
+
+                }
+
+            }
+
         }
 
-        container.append('<div class="jcolumnz-panel"><ul>' + li + '</ul></div>');
+        container.append('<div id="jcolumnz-panel-' + panel_id + '" class="jcolumnz-panel"><ul>' + li + '</ul></div>');
 
     }
 
@@ -76,7 +104,7 @@
 
         $(this).addClass("jcolumnz-container");
 
-        jcolumnz_exploreTree( $(this), settings.data )
+        jcolumnz_exploreTree( Math.random().toString(36).substr(2, 9), $(this), settings.data )
 
         return this;
 
