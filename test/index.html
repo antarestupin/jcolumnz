@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>jColumnz</title>
+        <meta charset="utf-8">
+
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../build/jquery.jcolumnz.min.js"></script>
+
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+        <link rel="stylesheet" href="../build/jquery.jcolumnz.min.css" />
+
+    </head>
+    <body>
+
+        <div class="container" id="content">
+
+            <div class="row">
+
+                <div class="col-sm-12">
+
+                    <h1 class="page-header"><i class="fa fa-columns"></i> jColumnz <small>A simple tree explorer</small></h1>
+
+                    <div id="explorer"></div>
+
+                    <h2 class="page-header">Informations</h2>
+
+                    <p>
+                        <i class="fa fa-github"></i>
+                        See the project on <a href="https://github.com/martin-damien/jcolumnz">Github</a>.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <script id="source-code" type="text/javascript">
+
+            $( document ).ready( function() {
+
+                var my_data = [
+                    
+                    { label: "Animals", on_click: function(){ alert("There is no animal"); } },
+                    
+                    {
+                        label: "Food",
+                        children: [
+                            {
+                                label: "Fruits",
+                                children: [
+
+                                    { label: "Banana", on_click: function(){ alert("I'm a banana !"); } },
+                                    {
+                                        label: "Apple",
+                                        children: [
+                                            { label: "Golden" },
+                                            { label: "Jonagold" }
+                                        ]
+                                    }
+
+                                ]
+                            },
+
+                            {
+                                label: "Vegetables",
+                                children: [
+                                    { label: "Beans" }
+                                ]
+                            },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" },
+                            { label: "Vegetables" }
+                        ]
+                    }
+                ];
+
+                $("#explorer").columnz(my_data);
+
+            });
+
+        </script>
+
+    </body>
+</html>
