@@ -21,26 +21,24 @@ Notice that you can easily chose how the result will be displayed in the css fil
 
 You can children to elements :
 ```javascript
-    var data = [
-        { label: "Line 1" },
-        { label: "Line 2", children: [
-            { label: "Child 1" },
-            { label: "Child 2" }
-        ] }
-    ];
-});
+var data = [
+    { label: "Line 1" },
+    { label: "Line 2", children: [
+        { label: "Child 1" },
+        { label: "Child 2" }
+    ] }
+];
 ```
 
 You can also add click event listeners on elements :
 ```javascript
-    var data = [
-        { label: "Line 1", on_click: function(){ alert("I'm the first line !"); } },
-        { label: "Line 2", children: [
-            { label: "Child 1" },
-            { label: "Child 2" }
-        ] }
-    ];
-});
+var data = [
+    { label: "Line 1", on_click: function(){ alert("I'm the first line !"); } },
+    { label: "Line 2", children: [
+        { label: "Child 1" },
+        { label: "Child 2" }
+    ] }
+];
 ```
 
 ## Compatibility
