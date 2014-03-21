@@ -11,69 +11,69 @@
 
 /* Container style */
 .jcolumnz-container {
-	height: 300px;
-	width: 100%;
-	
-	-webkit-border-radius: 3px;
-	   -moz-border-radius: 3px;
-	        border-radius: 3px;
-	
-	-webkit-box-shadow: 0 0 7px #ccc;
-	   -moz-box-shadow: 0 0 7px #ccc;
-	        box-shadow: 0 0 7px #ccc;
+    height: 300px;
+    width: 100%;
+    
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+    
+    -webkit-box-shadow: 0 0 7px #ccc;
+       -moz-box-shadow: 0 0 7px #ccc;
+            box-shadow: 0 0 7px #ccc;
 }
 
 /* Borders color */
 .jcolumnz-container, .jcolumnz-panel {
-	border-color: #aaa;
+    border-color: #aaa;
 }
 
 /* Style off hovered line */
 .jcolumnz-line:hover {
-	background-color: #eee;
-	color: #000;
+    background-color: #eee;
+    color: #000;
 }
 
 /* Style for a selected parent */
 .jcolumnz-line.jcolumnz-active {
-	background-color: #aaa;
-	color: #fff;
+    background-color: #aaa;
+    color: #fff;
 }
 
 /* Add a text or an icon to the right of a parent line - won't work on IE7 and below */
 .jcolumnz-parent:after{
-	float: right;
-	
-	/* With text */
-	
-	content: ">";
-	
-	
-	/* With icon */
-	/*
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	background-image: url();
-	*/
+    float: right;
+    
+    /* With text */
+    
+    content: ">";
+    
+    
+    /* With icon */
+    /*
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url();
+    */
 }
 
 /* Add a text or an icon to the right of a line without children - won't work on IE7 and below */
 .jcolumnz-final:after{
-	float: right;
-	
-	/* Text used */
-	/*
-	content: "";
-	*/
-	
-	/* Icon used */
-	/*
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	background-image: url();
-	*/
+    float: right;
+    
+    /* Text used */
+    /*
+    content: "";
+    */
+    
+    /* Icon used */
+    /*
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url();
+    */
 }
 
 /*
