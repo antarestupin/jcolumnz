@@ -10,30 +10,29 @@
     /**
      * Explore the data tree recursively extracting elements.
      *
-     * @todo Change iteration (for..of is only accepted by Firefox).
-     * @param container
+     * @param $container
      * @param root
      */
-    function jcolumnz_exploreTree( id, container, elements ) {
+    var exploreTree = function( id_parent, $container, elements ) {
 
         var id = Math.random().toString(36).substr(2, 9);
         var entries = [];
 
-        for ( element of elements ) {
+        for ( var i=0, element ; element = elements[i] ; i++ ) {
 
             if ( typeof element.children !== "undefined" ) {
 
-                element.target = jcolumnz_exploreTree( id, container, element.children );
+				element.parent = id_parent;
+				element.id = id;
+                element.target = exploreTree( id, $container, element.children );
 
             }
-
-            //console.log(element);
 
             entries.push( element );
 
         }
 
-        jcolumnz_createNewPanel( id, container, elements );
+        createNewPanel( id, $container, elements );
 
         return id;
 
@@ -42,49 +41,68 @@
     /**
      * Create a new panel inside the main container.
      *
-     * @todo Change iteration (for..of is only accepted by Firefox).
-     * @param container
+     * @param $container
      * @param elements
      */
-    function jcolumnz_createNewPanel( panel_id, container, elements ) {
+    var createNewPanel = function( panel_id, $container, elements ) {
 
         var id;
 
-        console.log(elements);
+        // Build <ul>.
 
-        // Build <li>s.
-
-        var li = "";
-        for ( element of elements ) {
+        var $ul = $(document.createElement('ul')).addClass('jColumnz-list'),
+			$li;
+		
+        for ( var i=0, element ; element = elements[i] ; i++ ) {
 
             id = Math.random().toString(36).substr(2, 9);
 
-            li += "<li id='jcolumnz-entry-" + id +"'>" + element.label + "</li>";
+            $li = $("<li class='jcolumnz-line jcolumnz-line-" + id +"'>" + element.label + "</li>");
 
             // Add onClick behaviour on the list item.
 
-            if ( typeof element.on_click !== "undefined" ) {
+            element.on_click && $li.click(element.on_click);
 
-                console.log("Attach behaviour to " + element.label);
+			// Add tree system
+			
+			if ( element.target ) {
 
-                $('li').on('click', '#jcolumnz-entry-' + id, element.on_click);
+				$li.addClass('jcolumnz-parent');
+				
+				$li.click((function(element){
+					return function(){
+						// Add and remove active class
+						$container.find('.jcolumnz-line').removeClass('jcolumnz-active');
+						$(this).addClass('jcolumnz-active');
+						
+						// Add and remove last class
+						$container.find('.jcolumnz-panel').removeClass('jcolumnz-last');
+						$('.jcolumnz-panel-'+ element.target).addClass('jcolumnz-last');
+						
+						// Hide every panel, excepted the one clicked, its parent and the children's panel
+						var not_parent = element.parent ? ':not(.jcolumnz-panel-'+ element.parent +')' : '';
+						$container.find(
+							'.jcolumnz-panel' +
+							':not(.jcolumnz-panel-'+ element.id +')' +
+							not_parent +
+							':not(.jcolumnz-panel-'+ element.target +')'
+						).hide(400);
+						
+						// Show needed panels (son and parent)
+						$container.find('.jcolumnz-panel-'+ element.target +', .jcolumnz-panel-'+ element.parent).show(400);
+					}
+				}(element)));
 
-
-            } else {
-
-                if ( typeof element.target !== "undefined" ) {
-
-                    console.log("Attach target to " + element.label);
-
-                    $('li').on('click', '#jcolumnz-entry-' + id, function(){ console.log("Should open " + element.target) });
-
-                }
-
-            }
+			}
+			else {
+				$li.addClass('jcolumnz-final');
+			}
+			
+			$ul.append($li);
 
         }
 
-        container.append('<div id="jcolumnz-panel-' + panel_id + '" class="jcolumnz-panel"><ul>' + li + '</ul></div>');
+        $container.prepend($('<div class="jcolumnz-panel jcolumnz-panel-' + panel_id + '"></div>').append($ul));
 
     }
 
@@ -103,10 +121,12 @@
         }, options );
 
         // Add a class to our container for easy styling.
+		
+        this.addClass("jcolumnz-container");
 
-        $(this).addClass("jcolumnz-container");
-
-        jcolumnz_exploreTree( Math.random().toString(36).substr(2, 9), $(this), settings.data )
+        var first = exploreTree( null, this, settings.data );
+		
+		this.find('.jcolumnz-panel:not(.jcolumnz-panel-'+ first +')').hide();
 
         return this;
 
