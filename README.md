@@ -6,7 +6,7 @@ jColumnz is a small, simple jQuery plugin that displays a data tree like the col
 
 You will firstly need to include the javascript and the css files on the document.
 
-Then call jColumnz on some empty <div> :
+Then call jColumnz on some empty `<div>` :
 ```javascript
 $(function(){
     var data = [
