@@ -2,6 +2,8 @@
 
 jColumnz is a small, simple jQuery plugin that displays a data tree like the columns view of Mac OS X Finder.
 
+[Demo here](http://codepen.io/antares/full/WbweoV/)
+
 ## Installation and use
 
 You will firstly need to include the javascript and the css files on the document.
