@@ -29,9 +29,13 @@
 
                     <h2 class="page-header">Informations</h2>
 
+					<p>
+						jColumnz is a simple way to display data organized as a tree.
+					</p>
+					
                     <p>
                         <i class="fa fa-github"></i>
-                        See the project on <a href="https://github.com/martin-damien/jcolumnz">Github</a>.
+                        Take a look at the project on <a href="https://github.com/antares993/jcolumnz">Github</a>.
                     </p>
 
                 </div>
@@ -45,52 +49,69 @@
             $( document ).ready( function() {
 
                 var my_data = [
-                    
-                    { label: "Animals", on_click: function(){ alert("There is no animal"); } },
-                    
-                    {
-                        label: "Food",
-                        children: [
-                            {
-                                label: "Fruits",
-                                children: [
-
-                                    { label: "Banana", on_click: function(){ alert("I'm a banana !"); } },
-                                    {
-                                        label: "Apple",
-                                        children: [
-                                            { label: "Golden" },
-                                            { label: "Jonagold" }
-                                        ]
-                                    }
-
-                                ]
-                            },
-
-                            {
-                                label: "Vegetables",
-                                children: [
-                                    { label: "Beans" }
-                                ]
-                            },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" },
-                            { label: "Vegetables" }
-                        ]
-                    }
+					{
+						label: "Wind instruments",
+						children: [
+							{
+								label: "Woodwind instruments",
+								children: [
+									{
+										label: "Flutes",
+										on_click: function(){ alert("Hello ! I'm an alert window fired by a function linked to \"Flutes\""); }
+									},
+									{
+										label: "Bagpipes",
+										on_click: function(){ alert("Hello ! I'm an alert window fired by a function linked to \"Bagpipes\""); }
+									}
+								]
+							},
+							{
+								label: "Harmonicas",
+								on_click: function(){ alert("Hello ! I'm an alert window fired by a function linked to \"Harmonicas\""); }
+							},
+							{
+								label: "Accordions",
+								on_click: function(){ alert("Hello ! I'm an alert window fired by a function linked to \"Accordions\""); }
+							}
+						]
+					},
+					{
+						label: "String instruments",
+						children: [
+							{
+								label: "Guitars",
+								children: [
+									{
+										label: "Acoustic guitars",
+										on_click: function(){ alert("Hello ! I'm an alert window fired by a function linked to \"Acoustic guitars\""); }
+									},
+									{
+										label: "Electric guitars",
+										on_click: function(){ alert("Hello ! I'm an alert window fired by a function linked to \"Electric guitars\""); }
+									},
+									{
+										label: "Acoustic-electric guitars",
+										on_click: function(){ alert("Hello ! I'm an alert window fired by a function linked to \"Acoustic-electric guitars\""); }
+									},
+									{
+										label: "Bass guitars",
+										children: [
+											{
+												label: "Acoustic bass guitars",
+												on_click: function(){ alert("Hello ! I'm an alert window fired by a function linked to \"Acoustic bass guitars\""); }
+											},
+											{
+												label: "Electric bass guitars",
+												on_click: function(){ alert("Hello ! I'm an alert window fired by a function linked to \"Electric bass guitars\""); }
+											}
+										]
+									}
+								]
+							}
+						]
+					}
                 ];
-
+				
                 $("#explorer").columnz(my_data);
 
             });
